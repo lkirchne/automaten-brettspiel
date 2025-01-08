@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spielbrett mit Spielfiguren</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #0d1b2a;
+            color: #e0e1dd;
+            font-family: 'Roboto', sans-serif;
+            overflow: auto;
+        }
+
+        #spielbrett {
+            width: 800px;
+            height: 600px;
+            background-image: url('https://i.ibb.co/k552GjK/Spielbrett.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            border: 3px solid #e0e1dd;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            margin: 20px 0;
+        }
+
+        .spielfigur {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            position: absolute;
+            touch-action: none;
+            border: 2px solid white;
+        }
+
+        .spieler1 {
+            background-color: #6b4dff;
+            top: 10%;
+            left: 10%;
+        }
+
+        .spieler2 {
+            background-color: #ff7e14;
+            top: 10%;
+            left: 15%;
+        }
+
+        #wuerfel {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 100px;
+            background-color: #e0e1dd;
+            border: 2px solid #0d1b2a;
+            border-radius: 10px;
+            font-size: 48px;
+            font-weight: bold;
+            color: #0d1b2a;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        #anleitung, #fragen {
+            max-width: 800px;
+            text-align: left;
+            margin: 20px;
+            background-color: #1b263b;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #ffcc00;
+        }
+
+        p, li {
+            line-height: 1.6;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-top: 10px;
+            border: 1px solid #e0e1dd;
+            border-radius: 5px;
+            background-color: #0d1b2a;
+            color: #e0e1dd;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="anleitung">
+        <h2>Spielanleitung:</h2>
+        <p>Stellt eure Spielfiguren auf die Erde. Würfelt abwechselnd. Die Zahl auf dem Würfel zeigt, welchen Übergang (Pfeil) ihr weitergehen müsst. Dazu folgt ihr den Pfeilen mit der richtigen Zahl zum nächsten Planeten. Gibt es mehrere Möglichkeiten, dürft ihr einen Weg auswählen. Ziel ist es, als erstes am Ziel auf dem Planeten Neptun anzukommen. Passt aber auf, dass ihr nicht in die Sonne fallt — dann habt ihr verloren!</p>
+    </div>
+
+    <div id="spielbrett">
+        <div class="spielfigur spieler1" draggable="false"></div>
+        <div class="spielfigur spieler2" draggable="false"></div>
+    </div>
+    Würfel (drauf klicken):
+    <div id="wuerfel">1</div>
+
+    <div id="fragen">
+        <strong>Bearbeite die Aufgaben in deinem Heft oder mache einen Screenshot und füge die Antwort in GoodNotes ein.</strong>
+        <h2>Fragestellungen:</h2>
+        <ol>
+            <li>Welchen Weg gehst du? Notiere die Reihenfolge der Planeten <textarea placeholder="Antwort hier einfügen..."></textarea></li>
+            <li>Welche Zahlen hast du gewürfelt? <textarea placeholder="Antwort hier einfügen..."></textarea></li>
+            <li>Bist du in die Sonne gefallen? <input type="checkbox"> ja <input type="checkbox"> nein</li>
+            <li>Hast du Neptun vor deinem Spielpartner erreicht? <input type="checkbox"> ja <input type="checkbox"> nein</li>
+            <li>Überlege dir: Was passiert im Spiel, wenn man in die Sonne fällt? Könnte man die Sonne noch mit Würfeln verlassen?
+                <textarea placeholder="Antwort hier einfügen..."></textarea>
+            </li>
+        </ol>
+
+        <h2>Die Raketen-Steuerung:</h2>
+        <p><strong>Aufgaben:</strong></p>
+        <ol>
+            <li>Mit welcher Abfolge von Zahlen kommst du zum Neptun? Schreibe drei Wege auf oder mache einen Screenshot und beantworte es in GoodNotes.
+                <textarea placeholder="Weg 1"></textarea>
+                <textarea placeholder="Weg 2"></textarea>
+                <textarea placeholder="Weg 3"></textarea>
+            </li>
+            <li>Mit welcher Abfolge von Zahlen fällst du in die Sonne? Schreibe zwei Wege auf oder nutze einen Screenshot.
+                <textarea placeholder="Weg 1"></textarea>
+                <textarea placeholder="Weg 2"></textarea>
+            </li>
+            <li>Schreibe für die beiden folgenden Wege auf, in welcher Reihenfolge die Planeten besucht werden. Entscheide dich für eine Reihenfolge, wenn es mehrere gibt. Nutze Heft oder Screenshot.
+                <p><strong>Weg 1: 1, 1, 2, 1, 3, 1, 3</strong></p>
+                <textarea placeholder="Reihenfolge der Planeten"></textarea>
+                Kannst du das Spiel gewinnen? <input type="checkbox"> ja <input type="checkbox"> nein
+                <p><strong>Weg 2: 2, 2, 3, 1, 1, 1, 2</strong></p>
+                <textarea placeholder="Reihenfolge der Planeten"></textarea>
+                Kannst du das Spiel gewinnen? <input type="checkbox"> ja <input type="checkbox"> nein
+            </li>
+        </ol>
+    </div>
+
+    <script>
+        const wuerfel = document.getElementById('wuerfel');
+
+        wuerfel.addEventListener('click', () => {
+            let animationFrames = 10; // Number of random changes during animation
+            let currentFrame = 0;
+
+            const interval = setInterval(() => {
+                wuerfel.textContent = Math.ceil(Math.random() * 3);
+                currentFrame++;
+
+                if (currentFrame >= animationFrames) {
+                    clearInterval(interval);
+                    wuerfel.textContent = Math.ceil(Math.random() * 3); // Final value
+                }
+            }, 100);
+        });
+
+        const spielbrett = document.getElementById('spielbrett');
+        const spielfiguren = document.querySelectorAll('.spielfigur');
+
+        spielfiguren.forEach(figur => {
+            let offsetX = 0;
+            let offsetY = 0;
+
+            let isDragging = false;
+
+            figur.addEventListener('pointerdown', (e) => {
+                isDragging = true;
+                offsetX = e.clientX - figur.getBoundingClientRect().left;
+                offsetY = e.clientY - figur.getBoundingClientRect().top;
+                figur.setPointerCapture(e.pointerId);
+            });
+
+            figur.addEventListener('pointermove', (e) => {
+                if (isDragging) {
+                    const newX = e.clientX - offsetX - spielbrett.getBoundingClientRect().left;
+                    const newY = e.clientY - offsetY - spielbrett.getBoundingClientRect().top;
+
+                    figur.style.left = `${Math.max(0, Math.min(spielbrett.clientWidth - figur.clientWidth, newX))}px`;
+                    figur.style.top = `${Math.max(0, Math.min(spielbrett.clientHeight - figur.clientHeight, newY))}px`;
+                }
+            });
+
+            figur.addEventListener('pointerup', () => {
+                isDragging = false;
+            });
+
+            figur.addEventListener('pointercancel', () => {
+                isDragging = false;
+            });
+        });
+    </script>
+</body>
+</html>
